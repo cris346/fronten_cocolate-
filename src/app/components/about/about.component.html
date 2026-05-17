@@ -1,0 +1,69 @@
+<div class="bg-ivory min-h-screen">
+  
+  <!-- Hero Section -->
+  <div class="relative py-24 bg-choco-dark overflow-hidden flex items-center justify-center">
+    <div class="absolute inset-0 opacity-40">
+      <img src="assets/caja chocolate amargo.jpeg" class="w-full h-full object-cover mix-blend-luminosity" />
+    </div>
+    <div class="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in-up">
+      <h2 class="text-gold tracking-widest text-sm font-medium uppercase mb-4">Nuestra Historia</h2>
+      <h1 class="text-4xl sm:text-6xl font-serif text-white mb-6">La Pasión por la Excelencia</h1>
+      <div class="w-24 h-1 bg-gold mx-auto"></div>
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      
+      <!-- Text -->
+      <div class="order-2 md:order-1 space-y-8">
+        <h3 class="text-3xl font-serif text-choco-dark">Artesanía en cada detalle</h3>
+        <p class="text-choco-medium leading-relaxed font-light text-lg">
+          En Crown, creemos que el chocolate no es solo un dulce, sino una experiencia sensorial. Desde la cuidadosa selección de nuestros granos de cacao hasta la delicada presentación en nuestras cajas de diseño exclusivo, cada paso está marcado por nuestra búsqueda incesante de la perfección.
+        </p>
+        <p class="text-choco-medium leading-relaxed font-light text-lg">
+          Nuestros maestros chocolateros combinan técnicas tradicionales con la más alta innovación, creando texturas y sabores que deleitan los paladares más exigentes. La elegancia y la sofisticación son el sello que define a Crown.
+        </p>
+        
+        <div class="pt-6">
+          <a routerLink="/customize" class="inline-block border border-gold text-choco-dark hover:bg-gold hover:text-white px-8 py-3 uppercase tracking-widest text-sm font-medium transition-all duration-300">
+            Descubrir Colección
+          </a>
+        </div>
+      </div>
+
+      <!-- Image Grid -->
+      <div class="order-1 md:order-2 grid grid-cols-2 gap-4">
+        <div class="space-y-4">
+          <div class="border-2 border-gold p-1">
+            <img src="assets/chocolate blanco.png" alt="White Chocolate" class="w-full aspect-square object-cover" />
+          </div>
+          <div class="border-2 border-gold/30 p-1">
+            <img src="assets/chocolate dulce.jpeg" alt="Milk Chocolate" class="w-full aspect-square object-cover" />
+          </div>
+        </div>
+        <div class="space-y-4 mt-8">
+          <div class="border-2 border-gold/50 p-1">
+            <img src="assets/chocolate relleno avellana.png" alt="Hazelnut" class="w-full aspect-square object-cover" />
+          </div>
+          <div class="border-2 border-gold/20 p-1">
+            <img src="assets/chocolate amargo.jpeg" alt="Dark Chocolate" class="w-full aspect-square object-cover" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+</style>

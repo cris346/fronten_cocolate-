@@ -1,0 +1,111 @@
+<div class="bg-white rounded-2xl w-full max-w-md overflow-hidden shadow-2xl relative animate-modal-pop">
+  
+  <button (click)="authService.closeModal()" class="absolute top-4 right-4 text-choco-light hover:text-choco-dark transition-colors z-10 p-2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <div class="bg-choco-dark p-8 text-center text-ivory flex flex-col items-center">
+    <img src="assets/logo.png" alt="Crown Logo" class="h-16 w-auto mb-4 object-contain" />
+    <h2 class="text-3xl font-serif text-gold tracking-widest mb-2">CROWN</h2>
+    <p class="text-sm text-cream/70">Ingresa o crea tu cuenta para disfrutar de la mejor experiencia.</p>
+  </div>
+
+  <div class="p-8">
+    
+    <!-- Tabs -->
+    <div class="flex border-b border-choco-light/20 mb-8">
+      <button 
+        (click)="switchTab('login')" 
+        [class.text-gold]="activeTab() === 'login'"
+        [class.border-gold]="activeTab() === 'login'"
+        [class.text-choco-medium]="activeTab() !== 'login'"
+        [class.border-transparent]="activeTab() !== 'login'"
+        class="flex-1 pb-3 text-sm font-medium uppercase tracking-wider border-b-2 transition-colors">
+        Iniciar Sesión
+      </button>
+      <button 
+        (click)="switchTab('signup')" 
+        [class.text-gold]="activeTab() === 'signup'"
+        [class.border-gold]="activeTab() === 'signup'"
+        [class.text-choco-medium]="activeTab() !== 'signup'"
+        [class.border-transparent]="activeTab() !== 'signup'"
+        class="flex-1 pb-3 text-sm font-medium uppercase tracking-wider border-b-2 transition-colors">
+        Registrarse
+      </button>
+    </div>
+
+    <!-- Login Form -->
+    @if (activeTab() === 'login') {
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="space-y-6">
+        <div>
+          <label class="block text-sm font-medium text-choco-medium mb-1">Correo Electrónico</label>
+          <input formControlName="email" type="email" placeholder="tucorreo@ejemplo.com"
+            class="w-full px-4 py-3 bg-ivory border border-choco-light/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-shadow"
+            [class.border-red-400]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+        </div>
+        
+        <div>
+          <div class="flex justify-between items-center mb-1">
+            <label class="block text-sm font-medium text-choco-medium">Contraseña</label>
+            <a href="#" class="text-xs text-gold hover:text-gold-light">¿Olvidaste tu contraseña?</a>
+          </div>
+          <input formControlName="password" type="password" placeholder="••••••••"
+            class="w-full px-4 py-3 bg-ivory border border-choco-light/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-shadow"
+            [class.border-red-400]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+        </div>
+
+        <button 
+          type="submit"
+          [disabled]="loginForm.invalid"
+          class="w-full py-4 mt-2 rounded-xl font-medium tracking-wider uppercase transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed bg-choco-dark hover:bg-choco-medium text-white shadow-md">
+          Entrar
+        </button>
+      </form>
+    }
+
+    <!-- Signup Form -->
+    @if (activeTab() === 'signup') {
+      <form [formGroup]="signupForm" (ngSubmit)="onSignup()" class="space-y-6">
+        <div>
+          <label class="block text-sm font-medium text-choco-medium mb-1">Correo Electrónico *</label>
+          <input formControlName="email" type="email" placeholder="tucorreo@ejemplo.com"
+            class="w-full px-4 py-3 bg-ivory border border-choco-light/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-shadow"
+            [class.border-red-400]="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+            @if (signupForm.get('email')?.invalid && signupForm.get('email')?.touched) {
+              <p class="text-xs text-red-500 mt-1">Ingresa un correo electrónico válido.</p>
+            }
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-choco-medium mb-1">Contraseña *</label>
+          <input formControlName="password" type="password" placeholder="Al menos 6 caracteres"
+            class="w-full px-4 py-3 bg-ivory border border-choco-light/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-shadow"
+            [class.border-red-400]="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+            @if (signupForm.get('password')?.invalid && signupForm.get('password')?.touched) {
+              <p class="text-xs text-red-500 mt-1">La contraseña debe tener al menos 6 caracteres.</p>
+            }
+        </div>
+
+        <button 
+          type="submit"
+          [disabled]="signupForm.invalid"
+          class="w-full py-4 mt-2 rounded-xl font-medium tracking-wider uppercase transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed bg-gold hover:bg-gold-light text-choco-dark shadow-md">
+          Crear Cuenta
+        </button>
+      </form>
+    }
+
+  </div>
+</div>
+
+<style>
+  @keyframes modalPop {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .animate-modal-pop {
+    animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+</style>

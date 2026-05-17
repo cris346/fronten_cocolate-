@@ -1,0 +1,141 @@
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="text-center mb-12">
+    <h1 class="text-4xl font-serif text-choco-dark mb-4">Checkout</h1>
+    <p class="text-choco-medium">Completa tu información de envío para finalizar tu pedido.</p>
+  </div>
+
+  @if (cartService.cartItems().length === 0 && !showSuccessModal()) {
+    <div class="text-center py-12 bg-white rounded-2xl shadow-sm border border-gold/10">
+      <p class="text-lg text-choco-light mb-6">No hay elementos en tu carrito.</p>
+      <a routerLink="/customize" class="inline-block px-8 py-3 bg-gold hover:bg-gold-light text-choco-dark font-medium uppercase tracking-wider rounded-xl transition-colors">Volver a la tienda</a>
+    </div>
+  } @else {
+    <div class="grid md:grid-cols-2 gap-12">
+      
+      <!-- Address Form -->
+      <div class="bg-white p-8 rounded-2xl shadow-sm border border-gold/10">
+        <h2 class="text-2xl font-serif text-choco-dark mb-6">Dirección de Envío</h2>
+        
+        <form [formGroup]="addressForm" (ngSubmit)="processOrder()" class="space-y-5">
+          <div>
+            <label class="block text-sm font-medium text-choco-medium mb-1">Calle y Número</label>
+            <input formControlName="calleNumero" type="text" 
+              class="w-full px-4 py-3 bg-ivory border border-choco-light/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-shadow"
+              [class.border-red-400]="addressForm.get('calleNumero')?.invalid && addressForm.get('calleNumero')?.touched">
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-choco-medium mb-1">Colonia / Barrio</label>
+            <input formControlName="colonia" type="text" 
+              class="w-full px-4 py-3 bg-ivory border border-choco-light/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-shadow"
+              [class.border-red-400]="addressForm.get('colonia')?.invalid && addressForm.get('colonia')?.touched">
+          </div>
+
+          <div class="grid grid-cols-2 gap-5">
+            <div>
+              <label class="block text-sm font-medium text-choco-medium mb-1">Código Postal</label>
+              <input formControlName="codigoPostal" type="text" 
+                class="w-full px-4 py-3 bg-ivory border border-choco-light/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-shadow"
+                [class.border-red-400]="addressForm.get('codigoPostal')?.invalid && addressForm.get('codigoPostal')?.touched">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-choco-medium mb-1">Estado</label>
+              <input formControlName="estado" type="text" 
+                class="w-full px-4 py-3 bg-ivory border border-choco-light/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-shadow"
+                [class.border-red-400]="addressForm.get('estado')?.invalid && addressForm.get('estado')?.touched">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-choco-medium mb-1">Ciudad / Municipio</label>
+            <input formControlName="ciudad" type="text" 
+              class="w-full px-4 py-3 bg-ivory border border-choco-light/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-shadow"
+              [class.border-red-400]="addressForm.get('ciudad')?.invalid && addressForm.get('ciudad')?.touched">
+          </div>
+
+          <button 
+            type="submit"
+            [disabled]="addressForm.invalid"
+            class="w-full mt-6 py-4 rounded-xl font-medium tracking-wider uppercase transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed
+                   bg-choco-dark hover:bg-choco-medium text-white shadow-md">
+            Comprar
+          </button>
+        </form>
+      </div>
+
+      <!-- Order Summary -->
+      <div>
+        <div class="bg-choco-dark text-ivory p-8 rounded-2xl shadow-xl sticky top-28">
+          <h2 class="text-2xl font-serif text-gold mb-6 border-b border-white/10 pb-4">Resumen del Pedido</h2>
+          
+          <div class="space-y-4 mb-6 max-h-64 overflow-y-auto pr-2 custom-scrollbar">
+            @for (item of cartService.cartItems(); track item.id) {
+              <div class="flex justify-between items-center text-sm bg-white/5 p-3 rounded border border-white/5">
+                <div>
+                  <span class="block font-medium">Caja {{ item.boxSize }}</span>
+                  <span class="text-xs text-cream/50">{{ item.chocolates.length }} chocolates</span>
+                </div>
+                <span class="text-gold font-medium">${{ item.price }}</span>
+              </div>
+            }
+          </div>
+
+          <div class="border-t border-white/10 pt-4 space-y-2 text-sm text-cream/80">
+            <div class="flex justify-between">
+              <span>Subtotal</span>
+              <span>${{ cartService.cartTotal() }}</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Envío</span>
+              <span>Gratis</span>
+            </div>
+            <div class="flex justify-between items-center text-lg text-white font-medium pt-4 mt-2 border-t border-white/10">
+              <span>Total</span>
+              <span class="text-2xl font-serif text-gold">${{ cartService.cartTotal() }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Success Modal -->
+  @if (showSuccessModal()) {
+    <div class="fixed inset-0 z-[70] flex items-center justify-center p-4">
+      <div class="absolute inset-0 bg-choco-dark/80 backdrop-blur-sm" (click)="closeModal()"></div>
+      <div class="relative bg-white rounded-2xl p-10 max-w-md w-full shadow-2xl text-center transform scale-100 animate-modal-pop">
+        <div class="w-20 h-20 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h2 class="text-3xl font-serif text-choco-dark mb-2">¡Pedido realizado con éxito!</h2>
+        <p class="text-choco-medium mb-8">Tu demostración ha sido procesada correctamente.</p>
+        <button (click)="closeModal()" class="w-full bg-gold hover:bg-gold-light text-choco-dark py-3 rounded-xl font-medium tracking-wider uppercase transition-colors">
+          Entendido
+        </button>
+      </div>
+    </div>
+  }
+</div>
+
+<style>
+  @keyframes modalPop {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .animate-modal-pop {
+    animation: modalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.5);
+    border-radius: 10px;
+  }
+</style>
