@@ -43,7 +43,7 @@ export class BoxBuilderComponent implements OnInit {
     };
   });
 
-  maxChocolates = computed(() => this.currentBoxData().capacity);
+  maxChocolates = computed(() => 1);
   price = computed(() => this.currentBoxData().basePrice);
 
   ngOnInit() {

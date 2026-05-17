@@ -21,8 +21,8 @@
       <div class="bg-white p-5 rounded-xl border border-choco-dark/5 shadow-sm relative group">
         <div class="flex justify-between items-start mb-3">
           <div>
-            <h3 class="font-serif text-lg text-choco-dark">Caja {{ item.boxSize }}</h3>
-            <p class="text-xs text-choco-light mt-1">{{ item.chocolates.length }} chocolates incluidos</p>
+            <h3 class="font-serif text-lg text-choco-dark">Barra {{ item.boxSize }}</h3>
+            <p class="text-xs text-choco-light mt-1">Personalizada a tu gusto</p>
           </div>
           <span class="text-lg font-medium text-gold">${{ item.price }}</span>
         </div>
@@ -53,7 +53,7 @@
         </svg>
         <p class="text-lg font-serif">Tu carrito está vacío</p>
         <button (click)="cartService.toggleCart()" routerLink="/customize" class="mt-6 px-6 py-2 border border-gold text-gold hover:bg-gold hover:text-white transition-colors rounded uppercase tracking-wider text-sm">
-          Explorar Cajas
+          Explorar Barras
         </button>
       </div>
     }

@@ -1,107 +1,116 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
   <div class="text-center mb-12">
-    <h1 class="text-4xl font-serif text-choco-dark mb-4">Personaliza tu Caja</h1>
-    <p class="text-choco-medium max-w-2xl mx-auto">Selecciona el tamaño y elige tus combinaciones favoritas de chocolates para crear una experiencia única.</p>
+    <h1 class="text-4xl font-serif text-choco-dark mb-4">Personaliza tu Barra</h1>
+    <p class="text-choco-medium max-w-2xl mx-auto">Selecciona el tamaño y elige tus combinaciones favoritas de
+      chocolates para crear una experiencia única.</p>
   </div>
 
   <div class="grid lg:grid-cols-12 gap-8 items-start">
     <!-- Builder Controls -->
     <div class="lg:col-span-8 space-y-10">
-      
+
       <!-- Size Selection -->
       <section class="bg-white p-8 rounded-2xl shadow-sm border border-gold/10">
         <h2 class="text-2xl font-serif text-choco-dark mb-6 flex items-center">
-          <span class="bg-gold/20 text-gold-light w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">1</span> 
-          Tamaño de la Caja
+          <span
+            class="bg-gold/20 text-gold-light w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">1</span>
+          Tamaño de la Barra
         </h2>
         <div class="grid sm:grid-cols-2 gap-4">
-          <button 
-            (click)="setBoxSize('Chica')"
-            [class.ring-2]="boxSize() === 'Chica'"
+          <button (click)="setBoxSize('Chica')" [class.ring-2]="boxSize() === 'Chica'"
             [class.ring-gold]="boxSize() === 'Chica'"
             class="relative rounded-xl border border-choco-light/20 hover:border-gold/50 transition-all text-left group overflow-hidden">
             <div class="h-32 bg-choco-dark/5 relative">
-              <img src="assets/caja chocolate blanco.jpeg" class="w-full h-full object-cover opacity-80 mix-blend-multiply" />
+              <img src="assets/caja chocolate blanco.jpeg"
+                class="w-full h-full object-cover opacity-80 mix-blend-multiply" />
             </div>
             <div class="p-6">
               <div class="flex justify-between items-start mb-2">
-                <h3 class="font-serif text-xl group-hover:text-gold transition-colors">Caja Chica</h3>
+                <h3 class="font-serif text-xl group-hover:text-gold transition-colors">Barra Chica</h3>
               </div>
-              <p class="text-sm text-choco-light">6 Chocolates seleccionados a tu gusto.</p>
+              <p class="text-sm text-choco-light">Barra de 90gr elegidos a tu gusto.</p>
             </div>
             @if (boxSize() === 'Chica') {
-              <div class="absolute top-4 right-4 w-6 h-6 bg-gold text-white rounded-full flex items-center justify-center z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
+            <div
+              class="absolute top-4 right-4 w-6 h-6 bg-gold text-white rounded-full flex items-center justify-center z-10">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
             }
           </button>
-          
-          <button 
-            (click)="setBoxSize('Grande')"
-            [class.ring-2]="boxSize() === 'Grande'"
+
+          <button (click)="setBoxSize('Grande')" [class.ring-2]="boxSize() === 'Grande'"
             [class.ring-gold]="boxSize() === 'Grande'"
             class="relative rounded-xl border border-choco-light/20 hover:border-gold/50 transition-all text-left group overflow-hidden">
             <div class="h-32 bg-choco-dark/5 relative">
-              <img src="assets/caja chocolate amargo.jpeg" class="w-full h-full object-cover opacity-80 mix-blend-multiply" />
+              <img src="assets/caja chocolate amargo.jpeg"
+                class="w-full h-full object-cover opacity-80 mix-blend-multiply" />
             </div>
             <div class="p-6">
               <div class="flex justify-between items-start mb-2">
-                <h3 class="font-serif text-xl group-hover:text-gold transition-colors">Caja Grande</h3>
+                <h3 class="font-serif text-xl group-hover:text-gold transition-colors">Barra Grande</h3>
               </div>
-              <p class="text-sm text-choco-light">12 Chocolates seleccionados a tu gusto.</p>
+              <p class="text-sm text-choco-light">Barra de 250g relegidos a tu gusto.</p>
             </div>
             @if (boxSize() === 'Grande') {
-              <div class="absolute top-4 right-4 w-6 h-6 bg-gold text-white rounded-full flex items-center justify-center z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
+            <div
+              class="absolute top-4 right-4 w-6 h-6 bg-gold text-white rounded-full flex items-center justify-center z-10">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
             }
           </button>
         </div>
       </section>
 
       <!-- Chocolate Selection -->
-      <section class="bg-white p-8 rounded-2xl shadow-sm border border-gold/10" [class.opacity-50]="selectedChocolates().length >= maxChocolates()">
+      <section class="bg-white p-8 rounded-2xl shadow-sm border border-gold/10"
+        [class.opacity-50]="selectedChocolates().length >= maxChocolates()">
         <h2 class="text-2xl font-serif text-choco-dark mb-6 flex items-center justify-between">
           <div class="flex items-center">
-            <span class="bg-gold/20 text-gold-light w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">2</span> 
-            Elige tus Chocolates
+            <span
+              class="bg-gold/20 text-gold-light w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">2</span>
+            Elige tu Sabor
           </div>
           <span class="text-sm font-sans text-choco-light">
             {{ selectedChocolates().length }} de {{ maxChocolates() }}
           </span>
         </h2>
-        
+
         <div class="grid sm:grid-cols-3 gap-6">
           @for (flavor of baseFlavors(); track flavor) {
-            <div class="space-y-4">
-              <div class="border-b border-gold/20 pb-2 flex items-center space-x-3">
-                <img [src]="'/' + flavorImages[flavor]" alt="{{flavor}}" class="w-14 h-14 rounded-full object-cover border border-choco-light/20 shadow-md" />
-                <h4 class="font-medium text-choco-medium text-lg">{{ flavor }}</h4>
-              </div>
-              
-              <div class="space-y-3">
-                @for (filling of fillings(); track filling) {
-                  <button 
-                    (click)="addChocolate(flavor, filling)"
-                    [disabled]="selectedChocolates().length >= maxChocolates()"
-                    class="w-full text-left p-2 rounded-lg text-sm border border-transparent hover:bg-cream hover:border-gold/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center group">
-                    
-                    <img [src]="'/' + fillingImages[filling]" alt="{{filling}}" class="w-12 h-12 rounded-md object-cover mr-3 shadow-sm group-hover:scale-110 transition-transform" />
-                    
-                    <span class="text-choco-dark group-hover:text-choco-medium flex-1 leading-tight">{{ filling }}</span>
-                    <span class="text-gold opacity-0 group-hover:opacity-100 flex-shrink-0 ml-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </button>
-                }
-              </div>
+          <div class="space-y-4">
+            <div class="border-b border-gold/20 pb-2 flex items-center space-x-3">
+              <img [src]="'/' + flavorImages[flavor]" alt="{{flavor}}"
+                class="w-14 h-14 rounded-full object-cover border border-choco-light/20 shadow-md" />
+              <h4 class="font-medium text-choco-medium text-lg">{{ flavor }}</h4>
             </div>
+
+            <div class="space-y-3">
+              @for (filling of fillings(); track filling) {
+              <button (click)="addChocolate(flavor, filling)"
+                [disabled]="selectedChocolates().length >= maxChocolates()"
+                class="w-full text-left p-2 rounded-lg text-sm border border-transparent hover:bg-cream hover:border-gold/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center group">
+
+                <img [src]="'/' + fillingImages[filling]" alt="{{filling}}"
+                  class="w-12 h-12 rounded-md object-cover mr-3 shadow-sm group-hover:scale-110 transition-transform" />
+
+                <span class="text-choco-dark group-hover:text-choco-medium flex-1 leading-tight">{{ filling }}</span>
+                <span class="text-gold opacity-0 group-hover:opacity-100 flex-shrink-0 ml-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </button>
+              }
+            </div>
+          </div>
           }
         </div>
       </section>
@@ -111,41 +120,47 @@
     <!-- Summary Sidebar -->
     <div class="lg:col-span-4 sticky top-28">
       <div class="bg-choco-dark text-ivory p-8 rounded-2xl shadow-xl">
-        <h3 class="text-2xl font-serif mb-2 text-gold">Tu Caja</h3>
+        <h3 class="text-2xl font-serif mb-2 text-gold">Tu Barra</h3>
         <div class="flex justify-between items-center mb-6 text-sm text-cream/70 border-b border-cream/10 pb-4">
           <span>Tamaño: {{ boxSize() }}</span>
-          <span>{{ selectedChocolates().length }} / {{ maxChocolates() }} seleccionados</span>
         </div>
 
         <!-- Selected Items list -->
         <div class="space-y-3 mb-8 min-h-[200px] max-h-[400px] overflow-y-auto custom-scrollbar pr-2">
           @for (choc of selectedChocolates(); track $index) {
-            <div class="flex items-center bg-white/5 p-3 rounded-lg border border-white/5 group hover:border-gold/30 transition-colors">
-              <div class="relative w-12 h-12 flex-shrink-0 mr-3">
-                <img [src]="'/' + fillingImages[choc.filling]" class="absolute w-10 h-10 rounded-full object-cover shadow-md z-10 bottom-0 right-0 border border-choco-dark" />
-                <img [src]="'/' + flavorImages[choc.baseFlavor]" class="absolute w-8 h-8 rounded-full object-cover shadow-sm top-0 left-0 border border-choco-dark" />
-              </div>
-              
-              <div class="flex-1">
-                <span class="block text-sm font-medium">{{ choc.baseFlavor }}</span>
-                <span class="block text-xs text-cream/60">{{ choc.filling }}</span>
-              </div>
-              
-              <button (click)="removeChocolate($index)" class="text-cream/40 hover:text-red-400 p-2 transition-colors ml-2" title="Eliminar">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+          <div
+            class="flex items-center bg-white/5 p-3 rounded-lg border border-white/5 group hover:border-gold/30 transition-colors">
+            <div class="relative w-12 h-12 flex-shrink-0 mr-3">
+              <img [src]="'/' + fillingImages[choc.filling]"
+                class="absolute w-10 h-10 rounded-full object-cover shadow-md z-10 bottom-0 right-0 border border-choco-dark" />
+              <img [src]="'/' + flavorImages[choc.baseFlavor]"
+                class="absolute w-8 h-8 rounded-full object-cover shadow-sm top-0 left-0 border border-choco-dark" />
             </div>
-          }
-          
-          @if (selectedChocolates().length === 0) {
-            <div class="h-full flex flex-col items-center justify-center text-cream/30 pt-10">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+
+            <div class="flex-1">
+              <span class="block text-sm font-medium">{{ choc.baseFlavor }}</span>
+              <span class="block text-xs text-cream/60">{{ choc.filling }}</span>
+            </div>
+
+            <button (click)="removeChocolate($index)"
+              class="text-cream/40 hover:text-red-400 p-2 transition-colors ml-2" title="Eliminar">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
-              <p class="text-sm">Tu caja está vacía</p>
-            </div>
+            </button>
+          </div>
+          }
+
+          @if (selectedChocolates().length === 0) {
+          <div class="h-full flex flex-col items-center justify-center text-cream/30 pt-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-2" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            </svg>
+            <p class="text-sm">Aún no eliges el sabor de tu barra</p>
+          </div>
           }
         </div>
 
@@ -154,18 +169,18 @@
             <span class="text-lg">Total</span>
             <span class="text-2xl font-serif text-gold">${{ price() }}</span>
           </div>
-          <button 
-            (click)="addToCart()"
-            [disabled]="selectedChocolates().length !== maxChocolates()"
+          <button (click)="addToCart()" [disabled]="selectedChocolates().length !== maxChocolates()"
             class="w-full py-4 rounded-xl font-medium tracking-wider uppercase transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed
                    bg-gold hover:bg-gold-light text-choco-dark hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] flex justify-center items-center">
             @if (selectedChocolates().length === maxChocolates()) {
-              Añadir al Carrito
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-              </svg>
+            Añadir al Carrito
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
             } @else {
-              Completa tu Caja
+            Elige tu Sabor
             }
           </button>
         </div>
@@ -179,10 +194,12 @@
   .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
   }
+
   .custom-scrollbar::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
   }
+
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: rgba(212, 175, 55, 0.5);
     border-radius: 10px;
